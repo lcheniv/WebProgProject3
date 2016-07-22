@@ -1,0 +1,164 @@
+body{
+	background-repeat: repeat;
+	font-family: Arial, Georgia, sans-serif;
+	font-size: 12pt;
+	line-height: 1.25em;
+	background-image: url('background.jpg') ;
+	height: 100%;
+}
+.empty {
+	background:#FFFFFF;
+}
+table #puzzleTable {
+	border-color:#fff;
+	border-collapse:collapse;
+	float:none;
+}
+.clear {
+	clear:both;
+}
+#puzzleTable td {
+	width:100px;
+	height:100px;
+	padding:0px;
+	margin:0px;
+	background:#FFFFFF;
+	font-size:32px;
+	font-weight:bold;
+	text-align:center;
+	font-family: sans-sarif;
+	color:#00bfff;
+	border: 2px solid #000000;
+	text-shadow: 4px 4px 6px #000080;
+}
+.highlightTile {
+    border: 2px solid red;
+    text-decoration: underline;
+    color:#00bfff;
+}
+.content {
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+	width: 400px;
+}
+.thumbnail {
+	width:400px;
+	height:400px;
+}
+#puzzleTable  .image00 {
+	background:url("pic.jpg") 0 0 no-repeat;
+}
+#puzzleTable .image01 {
+	background:url("pic.jpg") -100px 0  no-repeat;
+}
+#puzzleTable .image02 {
+	background:url("pic.jpg") -200px 0  no-repeat;
+}
+#puzzleTable .image03 {
+	background:url("pic.jpg") -300px 0  no-repeat;
+}
+#puzzleTable .image10 {
+	background:url("pic.jpg") 0 -100px  no-repeat;
+}
+#puzzleTable .image11 {
+	background:url("pic.jpg") -100px -100px  no-repeat;
+}
+#puzzleTable .image12 {
+	background:url("pic.jpg") -200px -100px  no-repeat;
+}
+#puzzleTable .image13 {
+	background:url("pic.jpg") -300px -100px  no-repeat;
+}
+#puzzleTable .image20 {
+	background:url("pic.jpg") 0 -200px  no-repeat;
+}
+#puzzleTable .image21 {
+	background:url("pic.jpg") -100px -200px  no-repeat;
+}
+#puzzleTable .image22 {
+	background:url("pic.jpg") -200px -200px  no-repeat;
+}
+#puzzleTable .image23 {
+	background:url("pic.jpg") -300px -200px  no-repeat;
+}
+#puzzleTable .image30 {
+	background:url("pic.jpg") 0 -300px  no-repeat;
+}
+#puzzleTable .image31 {
+	background:url("pic.jpg") -100px -300px  no-repeat;
+}
+#puzzleTable .image32 {
+	background:url("pic.jpg") -200px -300px  no-repeat;
+}
+#puzzleTable td{
+	border-radius: 30%;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+}
+#puzzleTable td:hover {
+   -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}
+.result {
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-left:auto;
+	margin-right:auto;
+	width: 300px;
+	background: url('background.jpg') ;
+	font-size: 12pt;
+	font-weight: bold;
+	line-height: 1.25em;
+	color: #000080;
+	float:right;
+	
+}
+button{
+	font-weight:bold;
+}
+h1{
+	color: Black;
+	font-family:"Courier New", Courier, monospace;
+	text-align:center;
+	text-shadow: 4px 4px 6px #000080;
+	font-size:500%;
+}
+#navbar {
+		margin-top: -15px;
+		margin-bottom: -15px;
+	}
+#tab {
+	color:#000000;
+	padding: 10px;
+	margin-left:auto;
+	margin-right:auto;	
+    border-spacing: 200px 10px;
+	}
+.box  {
+		background:#000080;
+		color:#FFFFFF;
+		border-color:#A00000;
+		border-radius: 10px;
+		padding: 5px;
+		font-family:Impact, Charcoal, sans-serif;
+		font-size: 30px;
+	}
+h1{
+	padding-top:30px;
+	text-align:center;
+	color: #000000;
+}
+a:link {
+    color: #D3D3D3;
+}
+a:hover
+{
+	color: #000000;
+	font-size: 40px;
+}
+a:visited {
+    color: #D3D3D3;
+}
