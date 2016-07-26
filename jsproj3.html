@@ -1,0 +1,167 @@
+<!--  TEAM MEMBERS: Lawrence, Syed, Chris, Jackie  -->
+<!--  PROFESSOR:    Louis Henry                    -->
+<!--  PROJECT:      Project 3 - Game of Life       -->
+<!--  DUE DATE:     7/25/2016                      -->
+<html>
+	<body>
+		<head>
+			<link href="project3_style.css" type="text/css" rel="stylesheet"/>
+			<title>Project 3 : Game of Life</title>
+			<h1>The Game of Life</h1>
+		</head>
+		<h2>How it works:</h2>
+		<p id="rules">
+			The game of life is a grid of cells where each cell is in the state of being alive or not. <br>The next generation of the game depends on the current generation and the following rules:
+			<ol>
+				<li>Any live cell with fewer than two live neighbors dies, as if caused by under population.</li>
+				<li>Any live cell with more than three live neighbors dies, as if by overcrowding.</li>
+				<li>Any live cell with two or three live neighbors lives on to the next generation.</li>
+				<li>Any dead cell with exactly three live neighbors becomes a live cell.</li>
+			</ol>		
+		</p>
+		<p id="display"></p>
+		<div id ="center_page">
+			<table id="myTable"><tr id="row1"><td id="1" class=""></td><td id="2" class=""></td><td id="3" class=""></td><td id="4" class=""></td><td id="5" class=""></td><td id="6" class=""></td><td id="7" class=""></td></tr>
+			</table>
+			<!-- BUTTONS -->
+			<button type="button" id="start" onclick="start()">Start</button>
+			<button type="button" id="stop" onclick="stop()">Stop</button>
+			<button type="button" id="incGen" onclick="incGen()">Go through a Generation cycle</button>
+			<button type="button" id="reset" onclick="reset()">Reset</button>
+			<button type="button" id="random" onclick="ranDom()">Random population</button>
+		</div>
+
+		<script>
+			var generation = 0;
+			var rows = prompt("How many rows do you want your grid to be? ");
+			var running = false;
+
+			for (i = 1; i < ((rows * 1) + 1); i++) {
+				document.getElementById("row" + (i)).insertAdjacentHTML("afterend", "<tr id=\"row" + (i+1) + "\"><td class=\"\" id=\"" + ((7*i)+1) + "\"></td><td class=\"dead\" onclick=\"alive(" + ((7*i)+2) + ")\" id=\"" + ((7*i)+2) + "\"></td><td class=\"dead\" onclick=\"alive(" + ((7*i)+3) + ")\" id=\"" + ((7*i)+3) + "\"></td><td class=\"dead\" onclick=\"alive(" + ((7*i)+4) + ")\" id=\"" + ((7*i)+4) + "\"></td><td class=\"dead\" onclick=\"alive(" + ((7*i)+5) + ")\" id=\"" + ((7*i)+5) + "\"></td><td class=\"dead\" onclick=\"alive(" + ((7*i)+6) + ")\" id=\"" + ((7*i)+6) + "\"></td><td class=\"\" id=\"" + ((7*i)+7) + "\"></td></tr>");
+			}
+
+			document.getElementById("myTable").insertAdjacentHTML("beforeend", "<tr><td class=\"\" id=\"" + ((7*((rows*1)+1))+1) + "\"></td><td class=\"\" id=\"" + ((7*((rows*1)+1))+2) + "\"></td><td class=\"\" id=\"" + ((7*((rows*1)+1))+3) + "\"></td><td class=\"\" id=\"" + ((7*((rows*1)+1))+4) + "\"></td><td class=\"\" id=\"" + ((7*((rows*1)+1))+5) + "\"></td><td class=\"\" id=\"" + ((7*((rows*1)+1))+6) + "\"></td><td class=\"\" id=\"" + ((7*((rows*1)+1))+7) + "\"></td></tr>"); 
+
+			// ALIVE FUNCTION
+			function alive(num) {
+				if (document.getElementById(num).classList.contains("alive")) {
+					document.getElementById(num).className = "dead"; 
+				}
+				else {
+					document.getElementById(num).className = "alive";
+				}
+			}
+			
+			// START FUNCTION
+			function start() {
+				if (running != false) {
+					alert("The game is already running.");
+				}
+				else {
+					running = window.setInterval(incGen, 750);
+				}
+			}
+			
+			// STOP FUNCTION
+			function stop() {
+				running = clearInterval(running);
+				running = false;
+			} 
+			
+			// INCREASE GENERATION FUNCTION
+			function incGen() {
+				generation++;
+				document.getElementById("display").innerHTML = "<span id=\"bold\">The current generation: </span>" + "<span id=\"style_num\">" + generation +"</span>";
+			    var dead = document.getElementsByClassName("dead");
+				var limit1 = dead.length;
+				for (q = 0; q < limit1; q++) {
+					if (howMany(dead, q) == 3) {
+						dead[q].className += " willAlive";
+					}
+				} 
+				var living = document.getElementsByClassName("alive");
+				var limit = living.length;
+				for (j = 0; j < limit; j++) {
+					if (howMany(living, j) < 2) {
+						living[j].className += " willDie";
+					}
+					else if (howMany(living, j) > 3) {
+						living[j].className += " willDie";
+					}
+				}
+				remove();
+			}
+
+
+			// REMOVE FUNCTION
+			function remove() {
+				for (e=1; e < (((rows*i)+2)*7); e++) {
+					if (document.getElementById(e).classList.contains("willDie")) {
+						document.getElementById(e).className = "dead";
+					}
+					else if (document.getElementById(e).classList.contains("willAlive")) {
+						document.getElementById(e).className = "alive";
+					}
+				}
+			}
+			
+			// RESET FUNCTION
+			function reset() {
+				generation = 0;
+				document.getElementById("display").innerHTML = "The current generation: " + generation;
+				var living = document.getElementsByClassName("alive");
+				for (p = 0; p < living.length;) {
+					living[p].className = "dead";
+				}
+				running = clearInterval(running);
+				running = false;
+			}
+			
+			// HOW MANY FUNCTION
+			function howMany(living, k) {
+				var test = 0;
+				var num = living[k].id * 1;
+				if (document.getElementById((num+1)).classList.contains("alive")) {
+					test++;
+				}
+				if (document.getElementById((num-1)).classList.contains("alive")) {
+					test++;
+				}
+				if (document.getElementById((num+7)).classList.contains("alive")) {
+					test++;
+				}
+				if (document.getElementById((num+8)).classList.contains("alive")) {
+					test++;
+				}
+				if (document.getElementById((num+6)).classList.contains("alive")) {
+					test++;
+				}
+				if (document.getElementById((num-7)).classList.contains("alive")) {
+					test++;
+				}
+				if (document.getElementById((num-8)).classList.contains("alive")) {
+					test++;
+				}
+				if (document.getElementById((num-6)).classList.contains("alive")) {
+					test++;
+				}				
+				return test;
+			}
+			
+			// RANDOM POPULATION FUNCTION
+			function ranDom() {
+				for (e=1; e < (((rows*i)+2)*7); e++) {
+					var secret = Math.floor((Math.random() * 100) + 1);
+					if (document.getElementById(e).className != "") {
+						if (secret > 50) {
+							document.getElementById(e).className = "alive"
+						}
+						else {
+							document.getElementById(e).className = "dead"	
+						}
+					}
+				}
+			} 
+		</script>
+	</body>
+</html>

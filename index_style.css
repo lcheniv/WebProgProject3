@@ -1,0 +1,38 @@
+body {
+
+    background-image: url("gameoflife.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+}
+
+#go_to {
+    margin-top: 20%;
+    margin-left: 45%;
+    margin-right: auto;
+}
+
+#go_to a {
+    font-size: 100%;
+    padding: 20px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+#go_to a:link, #go_to a:visited {
+    color: white;
+    border: 3px solid white;
+    font-size: 24px;
+    padding: 24px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#go_to a:hover, #go_to a:active {
+    background-color: white;
+    color:black;
+    font-size: 24px;
+    padding: 28px 30    px;
+    font-weight: bold;
+}
